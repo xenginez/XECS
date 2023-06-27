@@ -1,0 +1,9 @@
+﻿cmake_minimum_required (VERSION 3.8)
+
+project ("XECS")
+
+add_executable (XECS "main.cpp")
+
+if (CMAKE_VERSION VERSION_GREATER 3.12)
+  set_property(TARGET XECS PROPERTY CXX_STANDARD 20)
+endif()
