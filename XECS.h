@@ -18,9 +18,9 @@
 #include <memory_resource>
 #include <condition_variable>
 
-#ifndef CHUNK_SIZE
-#define CHUNK_SIZE (16384)
-#endif // !CHUNK_SIZE
+#ifndef X_ARCHETYPE_CHUNK_SIZE
+#define X_ARCHETYPE_CHUNK_SIZE (16384)
+#endif// !X_ARCHETYPE_CHUNK_SIZE
 
 namespace X
 {
@@ -226,7 +226,7 @@ namespace X
 				chunk( X::memory_resource * resource, std::span<component_info> components )
 					: _bits( resource->archetype_resource )
 				{
-					std::fill( _data, _data + CHUNK_SIZE, 0 );
+					std::fill( _data, _data + X_ARCHETYPE_CHUNK_SIZE, 0 );
 
 					std::size_t total_size = 0;
 					for ( const auto & it : components )
@@ -235,7 +235,7 @@ namespace X
 					_count = 0;
 					_components = components;
 
-					_bits.resize( CHUNK_SIZE / total_size );
+					_bits.resize( X_ARCHETYPE_CHUNK_SIZE / total_size );
 				}
 
 			public:
@@ -319,7 +319,7 @@ namespace X
 				std::pmr::vector<bool> _bits;
 				std::span<component_info> _components;
 
-				std::uint8_t _data[CHUNK_SIZE];
+				std::uint8_t _data[X_ARCHETYPE_CHUNK_SIZE];
 			};
 
 		public:
