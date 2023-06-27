@@ -1,4 +1,4 @@
-#include "XECS.h"
+#include "XECS.hpp"
 
 #include <iostream>
 #include <iomanip>
